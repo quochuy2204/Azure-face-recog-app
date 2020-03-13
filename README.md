@@ -5,15 +5,16 @@
 Open terminal at the project dir
 
 ``` bash 
-# run API
+# run API server
 npm start
 ```
 
 
 
-# run web app
+
 Open a new terminal windows and then
 ```
+# run web app
 cd web/face-detect-app
 npm start
 
