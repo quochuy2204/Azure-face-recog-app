@@ -9,6 +9,7 @@ Open terminal at the project dir
 npm start
 
 Open a new terminal windows and then
+
 # run web app
 cd web/face-detect-app
 npm start
