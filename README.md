@@ -2,14 +2,15 @@
  
 ## Running the app
 
-At this point you’re now ready to run the app:
+Open terminal at the project dir
 
 ``` bash 
 # run API
-npm run start
+npm start
 
+Open a new terminal windows and then
 # run web app
 cd web/face-detect-app
-npm run start
+npm start
 
 ```
