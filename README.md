@@ -13,7 +13,8 @@ npm start
 
 
 Open a new terminal windows and then
-```
+
+``` bash
 # run web app
 cd web/face-detect-app
 npm start
