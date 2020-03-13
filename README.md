@@ -7,6 +7,7 @@ Open terminal at the project dir
 ``` bash 
 # run API
 npm start
+```
 
 Open a new terminal windows and then
 
