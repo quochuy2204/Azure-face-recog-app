@@ -48,7 +48,7 @@ app.post('/create-facelist', async (req, res) => {
     const body = req.body
 
     const response = await instance.post(
-      `https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&recognitionModel=recognition_01&returnRecognitionModel=false&detectionModel=detection_01&returnFaceAttributes=age,gender`,
+      `https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&recognitionModel=recognition_01&returnRecognitionModel=false&detectionModel=detection_01&returnFaceAttributes=age,gender,emotion,glasses,hair,smile`,
       {
         url: body.image
       }
