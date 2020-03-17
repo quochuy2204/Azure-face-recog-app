@@ -53,8 +53,6 @@ app.post('/create-facelist', async (req, res) => {
         url: body.image
       }
     )
-
-    // send the response of the fetch
     res.send({
       response: 'ok',
       data: response.data
@@ -65,8 +63,73 @@ app.post('/create-facelist', async (req, res) => {
   }
 })
 
+app.post('/create-facelist2', async (req, res) => {
+  try {
+    const instanceOptions = {...baseInstanceOptions}
+    const instance = axios.create(instanceOptions)
+    const body = req.body
 
+    const response = await instance.post(
+      `https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&recognitionModel=recognition_01&returnRecognitionModel=false&detectionModel=detection_01&returnFaceAttributes=age,gender,emotion,glasses,hair,smile`,
+      {
+        url: body.image2
+      }
+    )
+    res.send({
+      response: 'ok',
+      data: response.data
+    })
+  } catch (err) {
+    console.log("error :c : ", err)
+    res.send({response: 'not ok'})
+  }
+})
 
+app.post('/create-facelist3', async (req, res) => {
+  try {
+    const instanceOptions = {...baseInstanceOptions}
+    const instance = axios.create(instanceOptions)
+    const body = req.body
+
+    const response = await instance.post(
+      `https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&recognitionModel=recognition_01&returnRecognitionModel=false&detectionModel=detection_01&returnFaceAttributes=age,gender,emotion,glasses,hair,smile`,
+      {
+        url: body.image3
+      }
+    )
+    res.send({
+      response: 'ok',
+      data: response.data
+    })
+  } catch (err) {
+    console.log("error :c : ", err)
+    res.send({response: 'not ok'})
+  }
+})
+
+app.post('/create-facelist4', async (req, res) => {
+  try {
+    const instanceOptions = {...baseInstanceOptions}
+    const instance = axios.create(instanceOptions)
+    const body = req.body;
+    console.log("bug there", body);
+
+    const response = await instance.post(
+      `https://northeurope.api.cognitive.microsoft.com/face/v1.0/verify`,
+      {
+        faceId1: body.faceID1,
+        faceId2: body.faceID2
+      }
+    )
+    res.send({
+      response: 'ok',
+      data: response.data
+    })
+  } catch (err) {
+    console.log("error :c : ", err)
+    res.send({response: 'not ok'})
+  }
+})
 
 // Create server
 const PORT = 5000
