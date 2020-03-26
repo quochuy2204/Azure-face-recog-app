@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const URLAPI = `http://localhost:5000`
+const URLAPI = `https://testing-facerecog.herokuapp.com`
 
 
 
@@ -16,12 +16,14 @@ const App = () => {
   const [image, setImage] = useState('')
   const [image2, setImage2] = useState('')
   const [image3, setImage3] = useState('');
+  const [image4, setImage4] = useState('');
 
   const [faceID1, setFaceID1] = useState(null);
   const [faceID2, setFaceID2] = useState(null);
   const [isIdentical, setIsIdentical] = useState(false);
   const [percent, setPercent] = useState(null);
   const [expression, setExpression] = useState(null);
+  const [abc, setAbc] = useState(null);
 
   const handleOnChange = event => {
     setImage(event.target.value)
@@ -33,6 +35,10 @@ const App = () => {
 
   const handleOnChange3 = event => {
     setImage3(event.target.value)
+  }
+
+  const handleOnChange4 = event => {
+    setImage4(event.target.value)
   }
 
   const handleDetectImage = async event => {
@@ -141,6 +147,37 @@ const App = () => {
     }
   }
 
+  const handleIdentity = async event => {
+    event.preventDefault();
+
+    console.log('will click');
+
+    try {
+      const fetchOptions = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          image4: image4,
+        })
+      }
+      const resp = await fetch(`${URLAPI}/create-facelist5`, fetchOptions)
+      const infoIdentity = await resp.json()
+      console.log("data of object identity: ", infoIdentity.data);
+      
+      setAbc(infoIdentity.data.description.captions[0].text);
+      
+      // setIsIdentical(infoVerify.data.isIdentical);
+      // setPercent(infoVerify.data.confidence.toFixed(2));
+    
+    
+    } catch (err) {
+      console.error(err.messsage);
+    }
+  }
+
   //faceiD1, faceiD2
   return (
     <div className="App">
@@ -236,7 +273,34 @@ const App = () => {
             }
           </div>
         }
+        <p>
+        3. Object identity, tagging and description
+        </p>
+        <div className="containerFile">
+          <input
+            className="inputFile"
+            placeholder="Upload image4"
+            onChange={handleOnChange4}
+            value={image4}
+          />
+          {image4 &&
+            <button
+              className="buttonFile"
+              onClick={handleIdentity}
+            >
+              Upload
+          </button>
+          }
+        </div>
 
+        {abc &&
+          <div>
+            
+            <p>Description: {abc}</p>
+            <p>Tags: {}</p>
+            <img src={image4} alt={image4} />
+          </div>
+        }
       </header>
     </div>
   );

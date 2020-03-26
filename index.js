@@ -15,6 +15,7 @@ app.use(express.json());
 const ApiKey = "d9277e9b487b4a40b026814d591ffcca"
 // Azure endpoint URL - Face API
 const AzureEndpoint = `https://northeurope.api.cognitive.microsoft.com/face/v1.0`
+const AzureEndpoint2 = `https://quochuy-computervision.cognitiveservices.azure.com/`
 
 // Base instance for axios request
 const baseInstanceOptions = {
@@ -23,6 +24,15 @@ const baseInstanceOptions = {
   headers: {
     'Content-Type': 'application/json',
     'Ocp-Apim-Subscription-Key': "d9277e9b487b4a40b026814d591ffcca"
+  }
+}
+
+const baseInstanceOptions2 = {
+  baseURL: AzureEndpoint2,
+  timeout: 50000,
+  headers: {
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': "1db0ed545a25491abdebe3ba762b09a2"
   }
 }
 
@@ -131,8 +141,31 @@ app.post('/create-facelist4', async (req, res) => {
   }
 })
 
+app.post('/create-facelist5', async (req, res) => {
+  try {
+    const instanceOptions = {...baseInstanceOptions2}
+    const instance = axios.create(instanceOptions)
+    const body = req.body;
+    console.log("bug there", body);
+
+    const response = await instance.post(
+      `https://northeurope.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description&details=Landmarks&language=en`,
+      {
+        url: body.image4
+      }
+    )
+    res.send({
+      response: 'ok',
+      data: response.data
+    })
+  } catch (err) {
+    console.log("error :c : ", err)
+    res.send({response: 'not ok'})
+  }
+})
+
 // Create server
-const PORT = 5000
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, err => {
   if (err) {
     console.error(err)
