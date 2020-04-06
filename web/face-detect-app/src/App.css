@@ -1,50 +1,54 @@
-.App {
-  text-align: left;
-}
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-around;
+  margin: 5% 5%;
 }
 
-.App-link {
-  color: #09d3ac;
+.item-left-container {
+  width: 50%;
 }
 
-.containerFile {
-  display: flex;
+.input-form{
+  width: 100%;
 }
 
-.inputFile {
-  border: 1px;
-  padding: 1em 2em;
+.input-form input{
+  outline: none;
+  width: 300px;
+  height: 30px;  
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px solid green;
+}
+.input-form button{
+  margin-left: 20px;
+  height: 30px;  
+  width: 100px;
+  font-size: 20px;
   border-radius: 5px;
+  border: none;
+  background-color: rgb(97, 182, 242)
 }
 
-.buttonFile {
-  margin-left: 2em;
-  background-color: #09d3ac;
-  color: white;
-  border-color: #09d3ac;
-  border-radius: 5px;
+.input-form button:disabled{ 
+  outline: none;
+  background-color: rgb(182, 186, 190);
+  color: black;
+}
+.input-form button:focus{ 
+  outline: none;
 }
 
-.titleAtribute {
-  margin-bottom: 0 !important;
+.item-right-container {
+  width: 50%;
+  margin: 0 20px;
 }
 
-.b {
-  position: absolute;
- 
-  border: 3px solid blue;
-} 
+.item-right-container img{
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
