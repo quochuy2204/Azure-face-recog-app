@@ -1,16 +1,61 @@
 
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1{
+  width: fit-content;
+  margin: 5% 10%;
+  border: solid 2px;
+  padding: 2px 8px;
+  font-style: italic;
+  font-weight: bolder;
+  color: #118ab2;
+}
+
+.hero{
+  width: 80%;
+  height: 80%;
+  margin: 0 10%;
+}
+
+.tab-box{
+  display: flex;
+  border-bottom: 1px solid #ef476f;
+}
+
+.tab-box button{
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  margin-right: 50px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .container {
   display: flex;
-  flex-direction: row;
-  width: 90%;
-  justify-content: space-around;
-  margin: 5% 5%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 .item-left-container {
-  width: 50%;
+  flex-basis: 50%;
+  padding: 5% 0;
+  padding-left: 16px;
+
 }
 
+.item-right-container {
+  flex-basis: 50%;
+  text-align: center;
+}
 .input-form{
   width: 100%;
 }
@@ -21,34 +66,38 @@
   height: 30px;  
   font-size: 20px;
   border: none;
-  border-bottom: 2px solid green;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #00b4d8;
 }
-.input-form button{
+
+.result{
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.verify{
   margin-left: 20px;
   height: 30px;  
   width: 100px;
   font-size: 20px;
   border-radius: 5px;
   border: none;
-  background-color: rgb(97, 182, 242)
+  background-color: #ffd166;
 }
 
-.input-form button:disabled{ 
+.verify:disabled{ 
   outline: none;
   background-color: rgb(182, 186, 190);
   color: black;
 }
-.input-form button:focus{ 
+
+.verify:focus{ 
   outline: none;
 }
 
-.item-right-container {
+img{
   width: 50%;
-  margin: 0 20px;
-}
-
-.item-right-container img{
-  width: 80%;
-  height: 60%;
+  height: 50%;
   object-fit: cover;
+  padding-top: 5%;
 }

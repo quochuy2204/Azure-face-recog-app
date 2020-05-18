@@ -4,12 +4,11 @@ import URLAPI from '../constants/Constants'
 export const ObjectIdentity = () => {
 
     const [image4, setImage4] = useState('');
-    const [abc, setAbc] = useState(null);
+    const [data, setData] = useState(null);
 
     const handleImage4 = event => {
         setImage4(event.target.value)
     }
-
 
     const handleIdentity = async event => {
         event.preventDefault();
@@ -31,7 +30,7 @@ export const ObjectIdentity = () => {
             const infoIdentity = await resp.json()
             console.log("data of object identity: ", infoIdentity.data);
 
-            setAbc(infoIdentity.data.description.captions[0].text);
+            setData(infoIdentity.data.description.captions[0].text);
 
         } catch (err) {
             console.error(err.messsage);
@@ -40,35 +39,36 @@ export const ObjectIdentity = () => {
 
 
     return (
-        <div>
-            <p>
-                3. Object identity, tagging and description
-        </p>
-            <div className="containerFile">
-                <input
-                    className="inputFile"
-                    placeholder="Upload image4"
-                    onChange={handleImage4}
-                    value={image4}
-                />
-                {image4 &&
-                    <button
-                        className="buttonFile"
-                        onClick={handleIdentity}
-                    >
-                        Upload
-          </button>
-                }
+        <div className="container">
+            <div className="item-left-container">
+                <div className="input-form">
+                    <input
+                        className="inputFile"
+                        placeholder="Upload image..."
+                        onChange={handleImage4}
+                        value={image4}
+                    />
+                    {image4 &&
+                        <button
+                            className="buttonFile"
+                            onClick={handleIdentity}
+                            disabled={image4 === '' || data}
+                        >
+                            Upload
+                    </button>
+                    }
+                </div>
             </div>
 
-            {abc &&
+            {data &&
                 <div>
-
-                    <p>Description: {abc}</p>
+                    <p>Description: {data}</p>
                     <p>Tags: {}</p>
                     <img src={image4} alt={image4} />
                 </div>
             }
         </div>
+
+
     )
 }

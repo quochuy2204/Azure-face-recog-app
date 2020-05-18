@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import URLAPI from '../constants/Constants'
+import DefaultImage from '../images/defaultImage.png'
 
 export const VerifyFace = () => {
 
@@ -19,8 +20,7 @@ export const VerifyFace = () => {
         setImage3(event.target.value)
     }
 
-    const handleFaceIDs = async event => {
-        event.preventDefault();
+    const handleFaceIDs = async () => {
 
         console.log('will click');
 
@@ -95,53 +95,80 @@ export const VerifyFace = () => {
 
     return (
         <div>
-            {/* <p>
-                2. Veryifying 2 faces
-        </p> */}
-            <div className="container">
-                <input
-                    className="inputFile"
-                    placeholder="Upload image2"
-                    onChange={handleImage2}
-                    value={image2}
-                />
 
-                <input
-                    className="inputFile"
-                    placeholder="Upload image3"
-                    onChange={handleImage3}
-                    value={image3}
-                />
-                {image3 !== '' && image2 !== '' &&
+            <div className="container">
+                <div className="item-left-container">
+                    <div className="input-form">
+                        <input
+                            className="inputFile"
+                            placeholder="Upload image2"
+                            onChange={handleImage2}
+                            value={image2}
+                        />
+                        {image2 === '' &&
+                            <img src={DefaultImage} alt="Default Image" width="50%" height="50%" />
+                        }
+                        {image2 !== '' &&
+                            <img src={image2} alt="" width="50%" height="50%" />
+
+                        }
+                    </div>
+                </div>
+                <div className="item-left-container">
+                    <div className="input-form">
+                        <input
+                            className="inputFile"
+                            placeholder="Upload image3"
+                            onChange={handleImage3}
+                            value={image3}
+                        />
+
+                        {image3 === '' &&
+                            <img src={DefaultImage} alt="Default Image" width="50%" height="50%" />
+                        }
+                        {image3 !== '' &&
+                            <img src={image3} alt="" width="50%" height="50%" />
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <div className="result">
+                {!faceID1 && !faceID2 &&
                     <button
-                        className="buttonFile"
+                        className="verify"
                         onClick={handleFaceIDs}
+                        disabled={ image2 === '' | image3 ===''}
                     >
                         Upload
-            </button>
+                        </button>
                 }
 
                 {faceID2 && faceID1 &&
                     <button
-                        className="buttonFile"
+                        className="verify"
                         onClick={handleVerify}
+                        disabled={image2 === '' || image3 === '' || percent}
+
                     >
                         Verify
-          </button>
+                    </button>
+                }
+
+                {percent &&
+                    <>
+                        <p> The percentage is {percent * 100} %</p>
+                        {!isIdentical &&
+                            <p> They are not the same</p>
+                        }
+                        {isIdentical &&
+                            <p>They are the same</p>
+                        }
+                    </>
                 }
             </div>
-
-            {percent &&
-                <div>
-                    <p> The percentage is {percent * 100} %</p>
-                    {!isIdentical &&
-                        <p> They are not the same</p>
-                    }
-                    {isIdentical &&
-                        <p>They are the same</p>
-                    }
-                </div>
-            }
         </div>
     )
 }
+
+// https://i.ibb.co/z7twrhn/57710735-2260547970668385-6252352036461871104-o.jpg
