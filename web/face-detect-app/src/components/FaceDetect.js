@@ -117,3 +117,5 @@ export const FaceDetect = () => {
 {/* <h3>
     Face detection and Attribute predictions
 </h3> */}
+
+// https://scontent-hel2-1.xx.fbcdn.net/v/t1.0-1/88099351_651164872311608_1574279335605436416_n.jpg?_nc_cat=108&_nc_sid=dbb9e7&_nc_eui2=AeG8abLWobv0CKXdEVWJuS4q1saAvgjKCJmWeUsmeyD57--xFIghACHOEY3QFjNisfnTvkuGTvlZHeCkbd9Cg2dG_HCMgoE3za4qmmHCeDKv5g&_nc_ohc=f8gG-VLiCEUAX8JXe6q&_nc_ht=scontent-hel2-1.xx&oh=95de977dd4b07ac2e4bbf4391c9ea130&oe=5EA4AA8D
